@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Tamalería - El mejor tamal colombiano</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>La Tamalería</h1>
+    <p>Auténtico sabor colombiano</p>
+  </header>
+
+  <main>
+    <section class="descripcion">
+      <h2>¿Ya probaste el mejor tamal de tu vida?</h2>
+      <p>En La Tamalería te traemos el verdadero sabor del tamal colombiano, con ingredientes frescos y preparados con amor.</p>
+    </section>
+
+    <section class="producto">
+      <img src="tamal1.jpg" alt="Delicioso tamal colombiano" />
+      <p class="precio">Solo $16.000 COP</p>
+      <a href="#pedido" class="boton">¡Haz tu pedido ahora!</a>
+    </section>
+
+    <section class="pedido" id="pedido">
+      <h2>Haz tu pedido</h2>
+      <form id="formulario-pedido">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="telefono">Teléfono (WhatsApp):</label>
+        <input type="tel" id="telefono" name="telefono" required>
+
+        <label for="cantidad">Cantidad de tamales:</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" required>
+
+        <label for="sabor">Sabor:</label>
+        <select id="sabor" name="sabor" required>
+          <option value="">Selecciona un sabor</option>
+          <option value="pollo">Pollo</option>
+          <option value="cerdo">Cerdo</option>
+          <option value="mixto">Mixto</option>
+          <option value="vegano">Vegano</option>
+        </select>
+
+        <button type="submit" class="boton">Enviar pedido por WhatsApp</button>
+      </form>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <p>Contáctanos vía WhatsApp: <a href="https://wa.me/573007801238">+57 300 780 1238</a></p>
+    <p>&copy; 2025 La Tamalería</p>
+  </footer>
+
+ <script>
+  document.getElementById("formulario-pedido").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value;
+    const telefono = document.getElementById("telefono").value;
+    const cantidad = document.getElementById("cantidad").value;
+    const sabor = document.getElementById("sabor").value;
+
+    const mensaje = `Hola, soy ${nombre}. Quisiera pedir ${cantidad} tamal(es) de sabor ${sabor}. Mi número de contacto es ${telefono}.`;
+
+    const numeroNegocio = "573007801238";
+    const url = `https://wa.me/${numeroNegocio}?text=${encodeURIComponent(mensaje)}`;
+
+    const confirmar = confirm("¿Deseas enviar este pedido por WhatsApp?");
+    if (confirmar) {
+      window.open(url, '_blank');
+    }
+  });
+</script>
+
+  <script>
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('section, header, footer').forEach((elemento) => {
+    observador.observe(elemento);
+  });
+</script>
+
+</body>
+</html>
