@@ -63,10 +63,11 @@
 
     const nombre = document.getElementById("nombre").value;
     const telefono = document.getElementById("telefono").value;
+    const direccion = document.getElementById("direccion").value;
     const cantidad = document.getElementById("cantidad").value;
     const sabor = document.getElementById("sabor").value;
 
-    const mensaje = `Hola, soy ${nombre}. Quisiera pedir ${cantidad} tamal(es) de sabor ${sabor}. Mi número de contacto es ${telefono}.`;
+    const mensaje = `Hola, soy ${nombre}. Quisiera pedir ${cantidad} tamal(es) de sabor ${sabor}. Mi número de contacto es ${telefono} y mi dirección es ${direccion}.`;
 
     const numeroNegocio = "573007801238";
     const url = `https://wa.me/${numeroNegocio}?text=${encodeURIComponent(mensaje)}`;
